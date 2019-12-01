@@ -1,0 +1,24 @@
+plete-list {
+  position: absolute;
+  overflow: hidden;
+  display: block;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+plete-item {
+  display: block;
+  white-space: nowrap;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+plete-item:hover {
+  background-color: #ddd;
+}
+
+plete-item.highlight {
+  color: white;
+  background: rgb(0, 123, 255);
+}
+

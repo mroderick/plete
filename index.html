@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Autocomplete demo</title>
+    <script src="http://127.0.0.1:35729/livereload.js?snipver=1"></script>
+    <script type="module" src="./dist/main-esm.js"></script>
+    <!-- use a blank favicon, so we don't have to see the 404 requests in the network tab -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAsC8qAP+EAACzh1cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAACAAAAAAAAACAAAAAAAAEiAAAAADAAAiAAAAAAMzAiAAAAAAAAMzAAAAAAAAAiMzMAAAAAAAADAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="./dist/main.css" />
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      }
+
+      section {
+        width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Autocomplete demos</h1>
+    <section id="simple">
+      <form action=".">
+        <fieldset>
+        <h2>Simple input</h2>
+          <label>
+            Country
+            <input type="text" name="country" autocomplete="off" autofocus="autofocus" />
+          </label>
+        </fieldset>
+      </form>
+      <p>
+        You selected: <span class="selectedValue"></span>
+      </p>
+      <script type="module">
+        import Plete from "./dist/main-esm.js";
+
+        const plete = new Plete({
+          autoFirst: false,
+          input: document.querySelector("#simple input[name='country']"),
+          dataSrc: ["Denmark", "Germany", "Spain", "Sweden", "United Kingdom"],
+          select: function(value) {
+            document.querySelector("#simple .selectedValue").textContent = value;
+          }
+        });
+      </script>
+    </section>
+
+    <section id="complex">
+      <form action=".">
+        <fieldset>
+          <h2>Complex input</h2>
+          <label>
+            Country
+            <input type="text" name="country" autocomplete="off" autofocus="autofocus" />
+          </label>
+        </fieldset>
+      </form>
+      <p>
+        You selected: <span class="selectedValue"></span>
+      </p>
+      <script type="module">
+        import Plete from "./dist/main-esm.js";
+
+        const plete = new Plete({
+          input: document.querySelector("#complex input[name='country']"),
+          dataSrc: [
+                { id: "BEL", label: "Belgium" },
+                { id: "DNK", label: "Denmark" },
+                { id: "GER", label: "Germany" },
+                { id: "MCO", label: "Monaco" },
+                { id: "SRB", label: "Serbia" },
+                { id: "ESP", label: "Spain" },
+                { id: "SWE", label: "Sweden" },
+                { id: "GBR", label: "United Kingdom" },
+                { id: "USA", label: "United States of America" }
+          ],
+          select: function(value) {
+            document.querySelector("#complex .selectedValue").textContent = value;
+          }
+        });
+      </script>
+    </section>
+
+    <section id="custom">
+      <form action=".">
+        <fieldset>
+          <h2>Custom rendering</h2>
+          <label>
+            Country
+            <input type="text" name="country" autocomplete="off" autofocus="autofocus" />
+          </label>
+        </fieldset>
+      </form>
+      <p>
+        You selected: <span class="selectedValue"></span>
+      </p>
+      <script type="module">
+        import Plete from "./dist/main-esm.js";
+
+        const plete = new Plete({
+          input: document.querySelector("#custom input[name='country']"),
+          dataSrc: [
+                { id: "BEL", label: "Belgium" },
+                { id: "DNK", label: "Denmark" },
+                { id: "GER", label: "Germany" },
+                { id: "MCO", label: "Monaco" },
+                { id: "SRB", label: "Serbia" },
+                { id: "ESP", label: "Spain" },
+                { id: "SWE", label: "Sweden" },
+                { id: "GBR", label: "United Kingdom" },
+                { id: "USA", label: "United States of America" }
+          ],
+          render: function(item) {
+            return `<b>${item.id}</b> ${item.label}`;
+          },
+          select: function(id) {
+            document.querySelector("#custom .selectedValue").textContent = id;
+          }
+        });
+      </script>
+    </section>
+
+    <section id="remote">
+      <form action=".">
+        <fieldset>
+          <h2>Remote filtering</h2>
+          <label>
+            Country
+            <input type="text" name="country" autocomplete="off" autofocus="autofocus" />
+          </label>
+        </fieldset>
+      </form>
+      <p>
+        You selected: <span class="selectedValue"></span>
+      </p>
+      <script type="module">
+        import Plete from "./dist/main-esm.js";
+
+        const plete = new Plete({
+          input: document.querySelector("#remote input[name='country']"),
+          dataSrc: async function filterCountries(query) {
+            const response = await fetch(`https://restcountries.eu/rest/v2/name/${query}`);
+            const result = await response.json();
+
+            if (!Array.isArray(result)) {
+              return [];
+            }
+
+            return result.map(function(v) {
+              return {
+                id: v.alpha3Code,
+                label: v.name
+              }
+            });
+          },
+          select: function(id) {
+            document.querySelector("#remote .selectedValue").textContent = id;
+          }
+        });
+      </script>
+    </section>
+  </body>
+</html>
