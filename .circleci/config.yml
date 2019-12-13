@@ -58,7 +58,7 @@ jobs:
 
 workflows:
   version: 2
-  x-monet-workflow:
+  workflow:
     jobs:
       - install-dependencies
       - lint:
