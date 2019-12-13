@@ -1,5 +1,7 @@
 # plete
 
+[![CircleCI](https://circleci.com/gh/mroderick/plete.svg?style=svg)](https://circleci.com/gh/mroderick/plete)
+
 A vanilla js autocomplete component that supports remote filtering.
 
 ## Objectives
