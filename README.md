@@ -1,6 +1,6 @@
 # plete
 
-[![CircleCI](https://circleci.com/gh/mroderick/plete.svg?style=svg)](https://circleci.com/gh/mroderick/plete) [![codecov](https://codecov.io/gh/mroderick/plete/branch/master/graph/badge.svg?token=NrW3z56wP9)](https://codecov.io/gh/mroderick/plete)
+[![CircleCI](https://circleci.com/gh/mroderick/plete.svg?style=svg)](https://circleci.com/gh/mroderick/plete) [![codecov](https://codecov.io/gh/mroderick/plete/branch/master/graph/badge.svg?token=NrW3z56wP9)](https://codecov.io/gh/mroderick/plete) ![npm](https://img.shields.io/npm/v/plete)
 
 A vanilla js autocomplete component that supports remote filtering.
 
