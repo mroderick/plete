@@ -54,7 +54,11 @@ jobs:
       - *attach-step
       - run:
           name: Test
-          command: npm test
+          command: npm run test-coverage
+      - run:
+          name: Upload coverage report
+          command: bash <(curl -s https://codecov.io/bash) -F unit -s coverage/lcov.info
+
 
 workflows:
   version: 2
