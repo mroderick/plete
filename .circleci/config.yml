@@ -1,0 +1,69 @@
+version: 2.1
+
+references:
+  x-docker: &docker
+    docker:
+      - image: circleci/node:10
+
+  x-workdir: &work-dir
+    working_directory: ~/source
+
+  x-save-workspace: &persist-step
+    persist_to_workspace:
+      root: ~/source
+      paths:
+        - .
+
+  x-attach: &attach-step
+    attach_workspace:
+      at: .
+
+jobs:
+  install-dependencies:
+    <<: *docker
+    <<: *work-dir
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-npm-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install dependencies
+          command: |
+            if [ ! -d node_modules ]; then
+                npm ci
+            fi
+      - save_cache:
+          key: v1-npm-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - *persist-step
+
+  lint:
+    <<: *docker
+    <<: *work-dir
+    steps:
+      - *attach-step
+      - run:
+          name: lint
+          command: npm run lint
+
+  mocha:
+    <<: *docker
+    steps:
+      - *attach-step
+      - run:
+          name: Test
+          command: npm test
+
+workflows:
+  version: 2
+  x-monet-workflow:
+    jobs:
+      - install-dependencies
+      - lint:
+          requires:
+            - install-dependencies
+      - mocha:
+          requires:
+            - lint
