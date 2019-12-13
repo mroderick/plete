@@ -4,6 +4,10 @@
 
 A vanilla js autocomplete component that supports remote filtering.
 
+```sh
+npm install plete --save
+```
+
 ## Objectives
 
 - [ ] Good WAI-ARIA support
