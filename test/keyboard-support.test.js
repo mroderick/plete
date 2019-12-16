@@ -82,6 +82,61 @@ describe("Plete", function() {
       });
     });
 
+    context("when displaying suggestions with autoFirst false", function() {
+      beforeEach(async function() {
+        this.fakeSelect = sinon.fake();
+        this.input = setupTest({
+          autoFirst: false,
+          select: this.fakeSelect
+        });
+
+        this.input.focus();
+        this.input.value = "a";
+        fireEvent.input(this.input, {
+          key: "a"
+        });
+
+        this.list = await waitForElement(() =>
+          document.querySelector("plete-list")
+        );
+
+        sinon.reset();
+      });
+
+      context("and pressing `Enter` when nothing is selected", function() {
+        it("selects nothing", function() {
+          fireEvent.keyDown(this.input, {
+            key: "Enter"
+          });
+          refute.called(this.fakeSelect);
+        });
+
+        it("does not update the value of the input", function() {
+          const originalValue = this.input.value;
+
+          fireEvent.keyDown(this.input, {
+            key: "Enter"
+          });
+          assert.equals(this.input.value, originalValue);
+        });
+
+        it("closes the suggestions panel", function() {
+          fireEvent.keyDown(this.input, {
+            key: "Enter"
+          });
+          refute.isNull(document.querySelector("plete-list"));
+        });
+
+        it("keeps focus on the input", function() {
+          fireEvent.keyDown(this.input, {
+            key: "Enter"
+          });
+
+          assert.equals(document.activeElement, this.input);
+        });
+      });
+    });
+
     context("when displaying suggestions", function() {
       beforeEach(async function() {
         this.fakeSelect = sinon.fake();
