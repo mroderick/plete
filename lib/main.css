@@ -1,3 +1,11 @@
+plete {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
 plete-list {
   position: absolute;
   overflow: hidden;
