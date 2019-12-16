@@ -4,8 +4,9 @@ import { getOptions } from "../test/test-helper";
 import Plete from "../lib/main.js";
 
 describe("Plete", function() {
-  it("is a singular Function named 'Autocomplete'", function() {
+  it("is a singular Function named 'Plete'", function() {
     assert.hasArity(Plete, 1);
+    assert.equals(Plete.name, "Plete");
   });
 
   context("when called without `new`", function() {
