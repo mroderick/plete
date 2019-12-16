@@ -35,18 +35,22 @@ function getOptions(overrides) {
   return Object.assign({}, defaults, overrides);
 }
 
-function setupTest(overrides = {}) {
+function setupTest(overrides = { existingPlete: false }) {
   document.body.innerHTML = "";
 
   const form = document.createElement("form");
   document.body.appendChild(form);
+
+  const parent = overrides.existingPlete
+    ? form.appendChild(document.createElement("plete"))
+    : form;
 
   const input = document.createElement("input");
   input.type = "text";
   input.id = "plete";
   input.tabIndex = 1;
 
-  form.appendChild(input);
+  parent.appendChild(input);
 
   // this is needed to be able to test moving focus away from the autocompleted input
   const focusableElement = document.createElement("input");
