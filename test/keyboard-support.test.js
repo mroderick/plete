@@ -2,7 +2,7 @@ import { assert, refute, sinon } from "@sinonjs/referee-sinon";
 import { fireEvent, waitForElement } from "@testing-library/dom";
 import { setupTest } from "./test-helper";
 
-describe("Autocomplete", function() {
+describe("Plete", function() {
   describe("keyboard", function() {
     beforeEach(function() {
       document.body.innerHTML = "";

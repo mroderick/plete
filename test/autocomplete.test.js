@@ -3,7 +3,7 @@ import { getOptions } from "../test/test-helper";
 
 import Plete from "../lib/main.js";
 
-describe("Autocomplete", function() {
+describe("Plete", function() {
   it("is a singular Function named 'Autocomplete'", function() {
     assert.hasArity(Plete, 1);
   });

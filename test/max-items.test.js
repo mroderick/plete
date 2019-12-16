@@ -2,7 +2,7 @@ import { assert } from "@sinonjs/referee-sinon";
 import { fireEvent, waitForElement } from "@testing-library/dom";
 import { setupTest } from "./test-helper";
 
-describe("Autocomplete", function() {
+describe("Plete", function() {
   async function assertNumberOfSuggestions(input, maxItems) {
     input.value = "a";
     fireEvent.input(input, {
