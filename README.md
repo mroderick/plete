@@ -10,7 +10,7 @@ npm install plete --save
 
 ## Objectives
 
-- [ ] Good WAI-ARIA support
+- [x] Good WAI-ARIA support
 - [x] Support multiple input types: keyboard, mouse, touch
 - [x] Support local and remove filtering (async function as datasource)
 - [x] Custom rendering of elements
