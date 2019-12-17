@@ -16,9 +16,12 @@
     "http-server": "http-server",
     "start": "npm-run-all --parallel http-server livereload dev-build",
     "prepublishOnly": "npm test && npm run build",
+    "preversion": "npm test",
+    "postversion": "git push --follow-tags && npm publish",
     "test": "mocha --require esm  --require jsdom-global/register --require make-promises-safe --recursive test lib",
     "test-check-coverage": "npm run test-coverage && nyc check-coverage --branches 100 --functions 100 --lines 100",
-    "test-coverage": "rm -rf node_modules/.cache/esm/ && nyc npm run test"
+    "test-coverage": "rm -rf node_modules/.cache/esm/ && nyc npm run test",
+    "version": "changes"
   },
   "author": {
     "name": "Morgan Roderick",
@@ -33,6 +36,7 @@
   ],
   "devDependencies": {
     "@sinonjs/referee-sinon": "^5.0.0",
+    "@studio/changes": "^1.7.0",
     "@testing-library/dom": "^6.10.1",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
