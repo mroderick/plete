@@ -21,7 +21,7 @@
     "test": "mocha --require esm  --require jsdom-global/register --require make-promises-safe --recursive test lib",
     "test-check-coverage": "npm run test-coverage && nyc check-coverage --branches 100 --functions 100 --lines 100",
     "test-coverage": "rm -rf node_modules/.cache/esm/ && nyc npm run test",
-    "version": "changes"
+    "version": "changes --commits --footer"
   },
   "author": {
     "name": "Morgan Roderick",
