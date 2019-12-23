@@ -40,7 +40,7 @@ describe("Plete", function() {
       });
 
       it("adds the cssClass option as the class attribute on the list element", function() {
-        assert.equals(this.list.classList, [this.cssClass]);
+        assert.equals(this.list.classList.toString(), this.cssClass);
       });
     });
   });
