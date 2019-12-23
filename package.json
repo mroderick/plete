@@ -35,7 +35,7 @@
     "not ie <= 11"
   ],
   "devDependencies": {
-    "@sinonjs/referee-sinon": "^5.0.0",
+    "@sinonjs/referee-sinon": "^6.0.0",
     "@studio/changes": "^1.7.0",
     "@testing-library/dom": "^6.10.1",
     "eslint": "^6.7.2",
