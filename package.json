@@ -2,6 +2,17 @@
   "name": "plete",
   "version": "0.2.1",
   "description": "A vanilla js auto complete component",
+  "keywords": [
+    "vanilla",
+    "autocomplete",
+    "component",
+    "typeahead",
+    "filter",
+    "accessible",
+    "wai-aria",
+    "async",
+    "remote"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/mroderick/plete.git"
