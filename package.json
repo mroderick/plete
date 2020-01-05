@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/mroderick/plete.git"
   },
+  "homepage": "https://plete.dev",
   "main": "dist/main-cjs.js",
   "module": "dist/main-esm.js",
   "scripts": {
