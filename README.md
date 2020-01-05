@@ -15,7 +15,7 @@ npm install plete --save
 - [x] Support local and remote filtering (async function as datasource)
 - [x] Custom rendering of elements
 - [x] Excellent test coverage
-- [x] zero dependencies
+- [x] Zero dependencies
 
 ## Compatibility
 
