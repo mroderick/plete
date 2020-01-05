@@ -12,7 +12,7 @@ npm install plete --save
 
 - [x] Good WAI-ARIA support
 - [x] Support multiple input types: keyboard, mouse, touch
-- [x] Support local and remove filtering (async function as datasource)
+- [x] Support local and remote filtering (async function as datasource)
 - [x] Custom rendering of elements
 - [x] Excellent test coverage
 
