@@ -31,4 +31,6 @@ If you have to support legacy browsers in your project, you likely already have 
 
 ## Documentation
 
-Please see [plete.dev](https://plete.dev) for documentation
+Please see [plete.dev](https://plete.dev) for documentation.
+
+If you'd like to contribute to the documentation, see [plete-docs](https://github.com/mroderick/plete-docs).
