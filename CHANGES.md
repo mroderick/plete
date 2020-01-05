@@ -1,5 +1,17 @@
 # Changes
 
+## 0.2.2
+
+- [`57eca5f`](https://plete.dev/commit/57eca5f89318183f3263e76042f98502fbf17279)
+  Add keywords to package.json
+    >
+    > This should help people find it easier
+    >
+- [`b33c888`](https://plete.dev/commit/b33c888911207fe3e0035fd5743f21fcbb34f4ac)
+  Fix typo in README
+
+_Released on 2020-01-05._
+
 ## 0.2.1
 
 - [`19baf0a`](https://plete.dev/commit/19baf0a87c6cbd6a2f692e564a8b342909e32b93)
