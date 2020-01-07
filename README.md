@@ -17,18 +17,6 @@ npm install plete --save
 - [x] Excellent test coverage
 - [x] Zero dependencies
 
-## Compatibility
-
-This project is aiming for wide compatibility in **modern** and **supported** browsers.
-
-This means that **no versions of IE**, or legacy versions of Safari (before 10) are supported.
-
-If you have to support legacy browsers in your project, you likely already have a transpiling setup and know how to use polyfills.
-
-[`eslint-plugin-compat`][compat] is used to ensure contributors are aware when they introduce compatibility issues.
-
-[compat]: https://github.com/amilajack/eslint-plugin-compat
-
 ## Documentation
 
 Please see [plete.dev](https://plete.dev) for documentation.
