@@ -4,16 +4,6 @@
 
 - [`23e0cea`](https://plete.dev/commit/23e0cea57c6484e9d1a148ed58e3644ccbc3ba29)
   Fix #6: escape input string on local filter
-- [`4d754fc`](https://plete.dev/commit/4d754fc012512931b1f946cd53aa81a74a84691f)
-  Update compatibility
-- [`dc6cbb4`](https://plete.dev/commit/dc6cbb4caa6209c7f957d1b41e0d0540aa785c6a)
-  Add vanity badges
-- [`1357f86`](https://plete.dev/commit/1357f860f92329c5326d30622ec68b082e9ff0d3)
-  Consistent capitalization (Tiffany Conroy)
-- [`ea3523b`](https://plete.dev/commit/ea3523b01db73d59aae3033a3c3d70abe79d6aa3)
-  Add link to documentation repo
-- [`6a0575e`](https://plete.dev/commit/6a0575e7a6952a6f1ac5e0cde61693d8b22f60c7)
-  Update README
 
 _Released on 2020-01-08._
 
