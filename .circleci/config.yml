@@ -70,4 +70,4 @@ workflows:
             - install-dependencies
       - mocha:
           requires:
-            - lint
+            - install-dependencies
