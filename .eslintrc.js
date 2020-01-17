@@ -355,7 +355,8 @@ module.exports = {
         "mocha/no-skipped-tests": "error",
         "mocha/no-top-level-hooks": "error",
 
-        "this/no-this": "off"
+        "this/no-this": "off",
+        "compat/compat": "off"
       }
     }
   ]
