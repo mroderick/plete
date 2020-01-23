@@ -1,5 +1,27 @@
 # Changes
 
+## 0.3.1
+
+- [`f557a0d`](https://github.com/mroderick/plete/commit/f557a0d5cfb249770e00165810df7cde0fe90da8)
+  Fix invalid escaping in filter
+    >
+    > The fix applied in 23e0cea57c6484e9d1a148ed58e3644ccbc3ba29 ended up
+    > breaking the filtering when `dataSrc` is an array of strings.
+    >
+    > Given ["Denmark", "Germany", "Spain", "Sweden", "United Kingdom"] it would not
+    > return ["Denmark"] for a query of "Den".
+    >
+    > The solution is to use a battle hardened escaping function, from:
+    >
+    > https://stackoverflow.com/a/3561711
+    >
+- [`9d9fe17`](https://github.com/mroderick/plete/commit/9d9fe1781c22532832331c0fb93778e179e0f127)
+  Remove unused file: europe.json
+- [`ce97f00`](https://github.com/mroderick/plete/commit/ce97f007c291c5ab726b4608e244264bc934ce28)
+  Remove cruft from changelog
+
+_Released on 2020-01-23._
+
 ## 0.3.0
 
 - [`37015f1`](https://github.com/mroderick/plete/commit/37015f1fedbb27b073e4989c24da7a9bbf6c3557)
