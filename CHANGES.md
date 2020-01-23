@@ -15,10 +15,6 @@
     >
     > https://stackoverflow.com/a/3561711
     >
-- [`9d9fe17`](https://github.com/mroderick/plete/commit/9d9fe1781c22532832331c0fb93778e179e0f127)
-  Remove unused file: europe.json
-- [`ce97f00`](https://github.com/mroderick/plete/commit/ce97f007c291c5ab726b4608e244264bc934ce28)
-  Remove cruft from changelog
 
 _Released on 2020-01-23._
 
