@@ -21,7 +21,7 @@
   "main": "dist/main-cjs.js",
   "module": "dist/main-esm.js",
   "scripts": {
-    "build": "rollup -c && cp lib/main.css dist/",
+    "build": "rollup -c && cp lib/plete.css dist/",
     "dev-build": "rollup -c --watch",
     "lint": "eslint .",
     "livereload": "livereload .",
