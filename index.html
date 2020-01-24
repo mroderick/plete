@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>Plete demo</title>
     <script src="http://127.0.0.1:35729/livereload.js?snipver=1"></script>
-    <script type="module" src="./dist/main-esm.js"></script>
+    <script type="module" src="./dist/plete-esm.js"></script>
     <!-- use a blank favicon, so we don't have to see the 404 requests in the network tab -->
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAsC8qAP+EAACzh1cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAACAAAAAAAAACAAAAAAAAEiAAAAADAAAiAAAAAAMzAiAAAAAAAAMzAAAAAAAAAiMzMAAAAAAAADAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" crossorigin="anonymous">
@@ -35,7 +35,7 @@
         You selected: <span class="selectedValue"></span>
       </p>
       <script type="module">
-        import Plete from "./dist/main-esm.js";
+        import Plete from "./dist/plete-esm.js";
 
         const plete = new Plete({
           autoFirst: false,
@@ -62,7 +62,7 @@
         You selected: <span class="selectedValue"></span>
       </p>
       <script type="module">
-        import Plete from "./dist/main-esm.js";
+        import Plete from "./dist/plete-esm.js";
 
         const plete = new Plete({
           input: document.querySelector("#complex input[name='country']"),
@@ -98,7 +98,7 @@
         You selected: <span class="selectedValue"></span>
       </p>
       <script type="module">
-        import Plete from "./dist/main-esm.js";
+        import Plete from "./dist/plete-esm.js";
 
         const plete = new Plete({
           input: document.querySelector("#custom input[name='country']"),
@@ -137,7 +137,7 @@
         You selected: <span class="selectedValue"></span>
       </p>
       <script type="module">
-        import Plete from "./dist/main-esm.js";
+        import Plete from "./dist/plete-esm.js";
 
         const plete = new Plete({
           input: document.querySelector("#remote input[name='country']"),
@@ -177,7 +177,7 @@
         You selected: <span class="selectedValue"></span>
       </p>
       <script type="module">
-        import Plete from "./dist/main-esm.js";
+        import Plete from "./dist/plete-esm.js";
 
         function dataSrc(query) {
           const controller = new AbortController();
