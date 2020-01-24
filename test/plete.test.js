@@ -1,7 +1,7 @@
 import { assert } from "@sinonjs/referee-sinon";
 import { getOptions } from "../test/test-helper";
 
-import Plete from "../lib/main.js";
+import Plete from "../lib/plete.js";
 
 describe("Plete", function() {
   it("is a singular Function named 'Plete'", function() {

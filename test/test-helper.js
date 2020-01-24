@@ -1,4 +1,4 @@
-import Plete from "../lib/main.js";
+import Plete from "../lib/plete.js";
 
 export { getOptions, setupTest };
 

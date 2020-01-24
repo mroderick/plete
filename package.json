@@ -18,8 +18,8 @@
     "url": "https://github.com/mroderick/plete.git"
   },
   "homepage": "https://plete.dev",
-  "main": "dist/main-cjs.js",
-  "module": "dist/main-esm.js",
+  "main": "dist/plete-cjs.js",
+  "module": "dist/plete-esm.js",
   "scripts": {
     "build": "rollup -c && cp lib/plete.css dist/",
     "dev-build": "rollup -c --watch",
