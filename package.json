@@ -45,7 +45,8 @@
     "defaults",
     "not safari <= 10",
     "not IE <= 11",
-    "not IE_Mob <= 11"
+    "not IE_Mob <= 11",
+    "not op_mini all"
   ],
   "devDependencies": {
     "@sinonjs/referee-sinon": "^6.0.0",
