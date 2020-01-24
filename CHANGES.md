@@ -1,5 +1,32 @@
 # Changes
 
+## 0.3.2
+
+- [`e842672`](https://github.com/mroderick/plete/commit/e8426720eb5a33e53725a816e5c818e518e3069d)
+  Rename main.js to plete.js
+- [`cce5321`](https://github.com/mroderick/plete/commit/cce53216d7c7b03949462fcba844eab95916479e)
+  Rename main.css to plete.css
+- [`353f21b`](https://github.com/mroderick/plete/commit/353f21b38d6f9f458fe5de3017ab432f1e2971f5)
+  Fix missing main.css in dev-mode
+    >
+    > When running in dev mode, `index.html` would load up the `main.css` from
+    > the `dist` folder.
+    >
+    > The `dist/main.css` file would only exist, if the `build` script had
+    > been run previously.
+    >
+    > That shouldn't be necessary for development. Also, loading it from
+    > `dist/` would mean that it could get out of date.
+    >
+    > Since the `http-server` part of the `start` script is serving up the
+    > entire repository from the root, we can use `main.css` from `lib/`
+    > directly.
+    >
+- [`bf0cea4`](https://github.com/mroderick/plete/commit/bf0cea4bf51c31b7a4e18be6c5b29ab319d9f901)
+  Remove cruft from CHANGES.md
+
+_Released on 2020-01-24._
+
 ## 0.3.1
 
 - [`f557a0d`](https://github.com/mroderick/plete/commit/f557a0d5cfb249770e00165810df7cde0fe90da8)
