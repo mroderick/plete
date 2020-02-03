@@ -308,8 +308,7 @@ module.exports = {
     "plugin:eslint-comments/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:prettier/recommended",
-    "plugin:testing-library/recommended"
+    "plugin:prettier/recommended"
   ],
   env: {
     browser: true,
@@ -337,6 +336,7 @@ module.exports = {
   overrides: [
     {
       files: ["*.test.*"],
+      extends: ["plugin:testing-library/recommended"],
       plugins: ["mocha"],
       env: {
         mocha: true
