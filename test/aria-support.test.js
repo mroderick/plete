@@ -14,10 +14,10 @@ describe("Plete", function() {
       });
     });
 
-    it("sets `aria-autocomplete` attribute to `list` on the input", function(){
-        const input = setupTest();
+    it("sets `aria-autocomplete` attribute to `list` on the input", function() {
+      const input = setupTest();
 
-        assert.equals(input.getAttribute("aria-autocomplete"), "list");
+      assert.equals(input.getAttribute("aria-autocomplete"), "list");
     });
 
     context("when suggestions are visible", function() {
