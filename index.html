@@ -229,5 +229,41 @@
         });
       </script>
     </section>
+
+    <section id="fetch-with-cancellation">
+      <form action=".">
+        <fieldset>
+          <h2>Fetch with cancellation</h2>
+          <label>
+            Country
+            <input type="text" name="country" autocomplete="off" autofocus="autofocus" />
+          </label>
+        </fieldset>
+      </form>
+      <p>
+        You selected: <span class="selectedValue"></span>
+      </p>
+      <script type="module">
+        import pleteWithFetchAndAbort from "./lib/plete-with-fetch-and-abort.js";
+
+        function mapCountriesToPleteData(countries) {
+          return countries.map(function(v) {
+            return {
+              id: v.alpha3Code,
+              label: v.name
+            };
+          });
+        }
+
+        const plete800 = pleteWithFetchAndAbort({
+          input: document.querySelector("#fetch-with-cancellation input[name='country']"),
+          mapData: mapCountriesToPleteData,
+          select: function(id) {
+            document.querySelector("#fetch-with-cancellation .selectedValue").textContent = id;
+          },
+          urlTemplate: "https://restcountries.eu/rest/v2/name/{query}"
+        });
+      </script>
+    </section>
   </body>
 </html>
