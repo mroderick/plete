@@ -1,0 +1,71 @@
+---
+title: My Rad Blog
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <!-- use a blank favicon, so we don't have to see the 404 requests in the network tab -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAsC8qAP+EAACzh1cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAACAAAAAAAAACAAAAAAAAEiAAAAADAAAiAAAAAAMzAiAAAAAAAAMzAAAAAAAAAiMzMAAAAAAAADAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@v1.x/themes/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plete@0.3.x/dist/plete.css" />
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        margin: 5vw;
+      }
+
+      table {
+        border-spacing: 0;
+        border-collapse: collapse;
+      }
+
+      tr:nth-child(2n) {
+        background-color: #f6f8fa;
+      }
+
+      td, th {
+        padding: 6px 13px;
+        border: 1px solid #dfe2e5;
+      }
+
+      fieldset {
+        border: none;
+      }
+
+      #big-demo {
+        font-size: 3em;
+        background-color: #ddd;
+        padding: 2em;
+        height: 8em
+      }
+
+      @media screen and (max-width: 480px) {
+        #big-demo {
+          padding: 1em;
+          font-size: 1em;
+        }
+      }
+
+      #big-demo fieldset {
+        padding: 0;
+      }
+
+      #big-demo input[name="country"] {
+        box-sizing: border-box;
+        display: block;
+        margin: 0.2em 0;
+        width: 100%;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/plete@0.3.x/dist/plete.js"></script>
+  </head>
+  <body>
+    {{ content | safe }}
+
+    <footer>&copy; <a href="https://roderick.dk">Morgan Roderick</a> — <a href="https://github.com/mroderick/plete">plete on GitHub</a></footer>
+  </body>
+</html>

@@ -27,6 +27,7 @@
     "livereload": "livereload .",
     "http-server": "http-server",
     "start": "npm-run-all --parallel http-server livereload dev-build",
+    "start-demo": "eleventy --serve",
     "prepublishOnly": "npm test && npm run build",
     "preversion": "npm test",
     "postversion": "git push --follow-tags && npm publish",
@@ -49,6 +50,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@11ty/eleventy": "^0.10.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
     "@sinonjs/referee-sinon": "^6.0.0",
     "@studio/changes": "^2.0.0",
     "@testing-library/dom": "^6.10.1",

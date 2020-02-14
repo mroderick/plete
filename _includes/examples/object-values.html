@@ -1,0 +1,32 @@
+<section id="object">
+  <form action=".">
+    <fieldset>
+      <label>
+        Country
+        <input type="text" name="country" autocomplete="off" />
+      </label>
+    </fieldset>
+  </form>
+  <p>
+    You selected: <span class="selectedValue"></span>
+  </p>
+  <script>
+    const plete2 = new Plete({
+      input: document.querySelector("#object input[name='country']"),
+      dataSrc: [
+            { id: "BEL", label: "Belgium" },
+            { id: "DNK", label: "Denmark" },
+            { id: "GER", label: "Germany" },
+            { id: "MCO", label: "Monaco" },
+            { id: "SRB", label: "Serbia" },
+            { id: "ESP", label: "Spain" },
+            { id: "SWE", label: "Sweden" },
+            { id: "GBR", label: "United Kingdom" },
+            { id: "USA", label: "United States of America" }
+      ],
+      select: function(value) {
+        document.querySelector("#object .selectedValue").textContent = value;
+      }
+    });
+  </script>
+</section>

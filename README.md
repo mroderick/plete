@@ -4,7 +4,7 @@
 
 A vanilla js autocomplete component that supports remote filtering.
 
-```sh
+```bash
 npm install plete --save
 ```
 
@@ -22,3 +22,12 @@ npm install plete --save
 Please see [plete.dev](https://plete.dev) for documentation.
 
 If you'd like to contribute to the documentation, see [plete-docs](https://github.com/mroderick/plete-docs).
+
+## Run the demo site locally
+
+```bash
+npm ci
+npm run start-demo
+
+open http://localhost:8080
+```

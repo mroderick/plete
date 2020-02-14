@@ -1,0 +1,40 @@
+<h2>Quick demo</h2>
+<section id="big-demo">
+  <form>
+    <fieldset>
+      <label>
+        Country<br/>
+        <input type="text" autocomplete="off" name="country" autofocus="autofocus" />
+      </label>
+    </fieldset>
+  </form>
+  <p>
+    You selected: <span class="selectedValue"></span>
+  </p>
+  <script>
+    async function filterCountries(query) {
+      const url = `${window.location.origin}/.netlify/functions/countries?query=${query}`
+      const response = await fetch(url);
+      if (!response.ok) {
+        return [];
+      }
+      const result = await response.json();
+      if (!Array.isArray(result)) {
+        return [];
+      }
+      return result.map(function(v) {
+        return {
+          id: v.alpha3Code,
+          label: v.name
+        }
+      });
+    }
+    const plete4 = new Plete({
+      input: document.querySelector("#big-demo input[name='country']"),
+      dataSrc: filterCountries,
+      select: function(id) {
+        document.querySelector("#big-demo .selectedValue").textContent = id;
+      }
+    });
+  </script>
+</section>
