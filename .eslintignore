@@ -1,3 +1,6 @@
+_includes
+_site
 .nyc_output
 coverage
 dist
+functions/countries.js

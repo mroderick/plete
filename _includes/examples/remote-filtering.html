@@ -1,0 +1,39 @@
+<section id="remote">
+  <form action=".">
+    <fieldset>
+      <label>
+        Country
+        <input type="text" name="country" autocomplete="off" />
+      </label>
+    </fieldset>
+  </form>
+  <p>
+    You selected: <span class="selectedValue"></span>
+  </p>
+  <script>
+    async function filterCountries(query) {
+      const url = `${window.location.origin}/.netlify/functions/countries?query=${query}`
+      const response = await fetch(url);
+      if (!response.ok) {
+        return [];
+      }
+      const result = await response.json();
+      if (!Array.isArray(result)) {
+        return [];
+      }
+      return result.map(function(v) {
+        return {
+          id: v.alpha3Code,
+          label: v.name
+        }
+      });
+    }
+    const plete5 = new Plete({
+      input: document.querySelector("#remote input[name='country']"),
+      dataSrc: filterCountries,
+      select: function(id) {
+        document.querySelector("#remote .selectedValue").textContent = id;
+      }
+    });
+  </script>
+</section>
