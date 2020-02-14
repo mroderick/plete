@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>plete</title>
+    <!-- use a blank favicon, so we don't have to see the 404 requests in the network tab -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAsC8qAP+EAACzh1cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAACAAAAAAAAACAAAAAAAAEiAAAAADAAAiAAAAAAMzAiAAAAAAAAMzAAAAAAAAAiMzMAAAAAAAADAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@v1.x/themes/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plete@0.3.x/dist/plete.css" />
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        margin: 5vw;
+      }
+
+      table {
+        border-spacing: 0;
+        border-collapse: collapse;
+      }
+
+      tr:nth-child(2n) {
+        background-color: #f6f8fa;
+      }
+
+      td, th {
+        padding: 6px 13px;
+        border: 1px solid #dfe2e5;
+      }
+
+      fieldset {
+        border: none;
+      }
+
+      #big-demo {
+        font-size: 3em;
+        background-color: #ddd;
+        padding: 2em;
+        height: 8em
+      }
+
+      @media screen and (max-width: 480px) {
+        #big-demo {
+          padding: 1em;
+          font-size: 1em;
+        }
+      }
+
+      #big-demo fieldset {
+        padding: 0;
+      }
+
+      #big-demo input[name="country"] {
+        box-sizing: border-box;
+        display: block;
+        margin: 0.2em 0;
+        width: 100%;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/plete@0.3.x/dist/plete.js"></script>
+  </head>
+  <body>
+    <h1><code>plete</code></h1>
+<p><a href="https://circleci.com/gh/mroderick/plete"><img src="https://circleci.com/gh/mroderick/plete.svg?style=svg" alt="CircleCI"></a> <a href="https://codecov.io/gh/mroderick/plete"><img src="https://codecov.io/gh/mroderick/plete/branch/master/graph/badge.svg?token=NrW3z56wP9" alt="codecov"></a> <img src="https://img.shields.io/npm/v/plete" alt="npm"> <img src="https://img.shields.io/bundlephobia/minzip/plete" alt="npm bundle size"></p>
+<p>A vanilla js autocomplete component that supports remote filtering.</p>
+<p>It enhances an existing <code>&lt;input type=&quot;text&quot;/&gt;</code> element and provides callbacks when busy, ready and selections are made.</p>
+<h2>Quick demo</h2>
+<section id="big-demo">
+  <form>
+    <fieldset>
+      <label>
+        Country<br/>
+        <input type="text" autocomplete="off" name="country" autofocus="autofocus" />
+      </label>
+    </fieldset>
+  </form>
+  <p>
+    You selected: <span class="selectedValue"></span>
+  </p>
+  <script>
+    async function filterCountries(query) {
+      const url = `${window.location.origin}/.netlify/functions/countries?query=${query}`
+      const response = await fetch(url);
+      if (!response.ok) {
+        return [];
+      }
+      const result = await response.json();
+      if (!Array.isArray(result)) {
+        return [];
+      }
+      return result.map(function(v) {
+        return {
+          id: v.alpha3Code,
+          label: v.name
+        }
+      });
+    }
+    const plete4 = new Plete({
+      input: document.querySelector("#big-demo input[name='country']"),
+      dataSrc: filterCountries,
+      select: function(id) {
+        document.querySelector("#big-demo .selectedValue").textContent = id;
+      }
+    });
+  </script>
+</section>
+<p>There are <a href="#demos">more demos below</a></p>
+<h2>Features</h2>
+<ul>
+<li>Good WAI-ARIA support</li>
+<li>Supports multiple input types: keyboard, mouse, touch</li>
+<li>Supports local and remote filtering (async function as datasource)</li>
+<li>Custom rendering of elements</li>
+<li>100% test coverage</li>
+<li>BSD-3 License</li>
+<li>Zero dependencies</li>
+</ul>
+<h2>Compatibility</h2>
+<p>This project is aiming for wide compatibility in <a href="https://www.techopedia.com/definition/31094/evergreen-browser">modern, evergreen browsers</a>.</p>
+<p>Specifically, <a href="https://browserl.ist/?q=defaults%2C+not+safari+%3C%3D+10%2C+not+ie+%3C%3D+11%2C+not+IE_Mob+%3C%3D+11"><code>defaults, not safari &lt;= 10, not ie &lt;= 11, not IE_Mob &lt;= 11</code></a>.</p>
+<p>If you need to support legacy browsers in your project, you likely already have a transpiling setup and know how to use polyfills.</p>
+<h2>Installation</h2>
+<p>You can load <code>plete</code> straight from jsDelivr or install it locally via <code>npm</code></p>
+<h3>jsDelivr</h3>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/plete@0.3.x/dist/plete.css&quot; /&gt;
+
+&lt;!-- this loads script with a global Plete constructor, CJS and ESM versions exist in dist/--&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/plete@0.3.x/dist/plete.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h3>npm</h3>
+<pre><code class="language-bash">npm install plete --save
+</code></pre>
+<p>The <code>dist/</code> folder contains all stylesheet and scripts, which you can include in your project.</p>
+<h2>Usage</h2>
+<pre><code class="language-html">&lt;label&gt;
+  Country
+  &lt;!-- the input element to listen to events on --&gt;
+  &lt;input type=&quot;text&quot; name=&quot;country&quot; /&gt;
+&lt;/label&gt;
+</code></pre>
+<pre><code class="language-js">const plete = new Plete({
+  // the input element to listen to events on
+  input: document.querySelector(&quot;input[name='country']&quot;),
+  // an array of strings/objects or an async function
+  dataSrc: [
+    { id: &quot;BEL&quot;, label: &quot;Belgium&quot; },
+    { id: &quot;DNK&quot;, label: &quot;Denmark&quot; },
+    { id: &quot;GER&quot;, label: &quot;Germany&quot; },
+    { id: &quot;MCO&quot;, label: &quot;Monaco&quot; },
+    { id: &quot;SRB&quot;, label: &quot;Serbia&quot; },
+    { id: &quot;ESP&quot;, label: &quot;Spain&quot; },
+    { id: &quot;SWE&quot;, label: &quot;Sweden&quot; },
+    { id: &quot;GBR&quot;, label: &quot;United Kingdom&quot; },
+    { id: &quot;USA&quot;, label: &quot;United States of America&quot; }
+  ],
+  // a callback to receive the chosen value
+  select: function countrySelected(value) {
+    console.log(`The user selected: ${value}`);
+  }
+});
+</code></pre>
+<h2>Options</h2>
+<h3><code>input</code></h3>
+<p>The <code>&lt;input&gt;</code> element to listen for events on</p>
+<h3><code>dataSrc</code></h3>
+<p>An array or async function with values to use as options.</p>
+<h4>Array of strings</h4>
+<p>Providing an array of string values as <code>dataSrc</code> is only included for demo/prototyping purposes.</p>
+<p>If you only need string values, you should consider using the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist"><code>&lt;datalist&gt;</code></a> element instead of <code>plete</code>.</p>
+<pre><code class="language-js">const dataSrc = [&quot;Denmark&quot;, &quot;Germany&quot;, &quot;Spain&quot;, &quot;Sweden&quot;, &quot;United Kingdom&quot;];
+</code></pre>
+<h4>Array of objects</h4>
+<p>When providing an array of objects, they should have the following properties:</p>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>A string that identifies the chosen value</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td>A string to render to represent the value when rendered as an option</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-js">const dataSrc = [
+  { id: &quot;BEL&quot;, label: &quot;Belgium&quot; },
+  { id: &quot;DNK&quot;, label: &quot;Denmark&quot; },
+  { id: &quot;GER&quot;, label: &quot;Germany&quot; },
+  { id: &quot;MCO&quot;, label: &quot;Monaco&quot; },
+  { id: &quot;SRB&quot;, label: &quot;Serbia&quot; },
+  { id: &quot;ESP&quot;, label: &quot;Spain&quot; },
+  { id: &quot;SWE&quot;, label: &quot;Sweden&quot; },
+  { id: &quot;GBR&quot;, label: &quot;United Kingdom&quot; },
+  { id: &quot;USA&quot;, label: &quot;United States of America&quot; }
+];
+</code></pre>
+<p>Extra properties are allowed, and can be used for <a href="#custom">custom rendering of options</a>.</p>
+<h4>async function</h4>
+<p>Using an async function as <code>dataSrc</code> allows us to do remote filtering and mapping the returned data into the format that <code>plete</code> understands (see section on objects above).</p>
+<pre><code class="language-js">const dataSrc = async function filterCountries(query) {
+  const response = await fetch(`https://restcountries.eu/rest/v2/name/${query}`);
+  if (!response.ok) {
+    return [];
+  }
+  const result = await response.json();
+  if (!Array.isArray(result)) {
+    return [];
+  }
+  return result.map(function(v) {
+    return {
+      id: v.alpha3Code,
+      label: v.name
+    }
+  });
+}
+</code></pre>
+<h3><code>select</code></h3>
+<p>A callback to call with the <code>id</code> property of the selected value.</p>
+<p>When <code>dataSrc</code> is an array of strings, this will be the chosen string.</p>
+<pre><code class="language-js">function countrySelected(value) {
+  console.log(`The user selected: ${value}`);
+}
+</code></pre>
+<h3><code>autoFirst</code> (optional)</h3>
+<p>When set, the first suggestion will be automatically highlighted.</p>
+<p>Default: <code>true</code></p>
+<h3><code>busy</code> (optional)</h3>
+<p>A callback to call before filtering.</p>
+<h3><code>cssClass</code> (optional)</h3>
+<p>One or more CSS classes to add to the containing <code>&lt;plete-list&gt;</code> element</p>
+<h3><code>maxItems</code> (optional)</h3>
+<p>The number of suggestions to display.</p>
+<p>Default: <code>5</code></p>
+<h3><code>ready</code> (optional)</h3>
+<p>A callback to call after filtering.</p>
+<h3><code>minChars</code> (optional)</h3>
+<p>The number of characters required before searching (when using remote).</p>
+<p>Default: <code>3</code></p>
+<h3><code>render</code> (optional)</h3>
+<p>A callback to render individual values.</p>
+<p>This can be used for enriching the rendering of individual values.</p>
+<pre><code class="language-js">render: function renderOption(item) {
+  return `&lt;b&gt;${item.id}&lt;/b&gt; ${item.label}`;
+}
+</code></pre>
+<h2 id="demos">Demos</h2>
+<h3>String values</h3>
+<p>The <code>dataSrc</code> option can be an array of string values.</p>
+<pre><code class="language-js">const dataSrc = [&quot;Denmark&quot;, &quot;Germany&quot;, &quot;Spain&quot;, &quot;Sweden&quot;, &quot;United Kingdom&quot;];
+</code></pre>
+<section id="string">
+  <form action=".">
+    <fieldset>
+      <label>
+        Country
+        <input type="text" name="country" autocomplete="off" />
+      </label>
+    </fieldset>
+  </form>
+  <p>
+    You selected: <span class="selectedValue"></span>
+  </p>
+  <script>
+    const plete1 = new Plete({
+      input: document.querySelector("#string input[name='country']"),
+      dataSrc: ["Denmark", "Germany", "Spain", "Sweden", "United Kingdom"],
+      select: function(value) {
+        document.querySelector("#string .selectedValue").textContent = value;
+      }
+    });
+  </script>
+</section>
+<h3>Object values</h3>
+<pre><code class="language-js">const dataSrc = [
+  { id: &quot;BEL&quot;, label: &quot;Belgium&quot; },
+  { id: &quot;DNK&quot;, label: &quot;Denmark&quot; },
+  { id: &quot;GER&quot;, label: &quot;Germany&quot; },
+  { id: &quot;MCO&quot;, label: &quot;Monaco&quot; },
+  { id: &quot;SRB&quot;, label: &quot;Serbia&quot; },
+  { id: &quot;ESP&quot;, label: &quot;Spain&quot; },
+  { id: &quot;SWE&quot;, label: &quot;Sweden&quot; },
+  { id: &quot;GBR&quot;, label: &quot;United Kingdom&quot; },
+  { id: &quot;USA&quot;, label: &quot;United States of America&quot; }
+];
+</code></pre>
+<section id="object">
+  <form action=".">
+    <fieldset>
+      <label>
+        Country
+        <input type="text" name="country" autocomplete="off" />
+      </label>
+    </fieldset>
+  </form>
+  <p>
+    You selected: <span class="selectedValue"></span>
+  </p>
+  <script>
+    const plete2 = new Plete({
+      input: document.querySelector("#object input[name='country']"),
+      dataSrc: [
+            { id: "BEL", label: "Belgium" },
+            { id: "DNK", label: "Denmark" },
+            { id: "GER", label: "Germany" },
+            { id: "MCO", label: "Monaco" },
+            { id: "SRB", label: "Serbia" },
+            { id: "ESP", label: "Spain" },
+            { id: "SWE", label: "Sweden" },
+            { id: "GBR", label: "United Kingdom" },
+            { id: "USA", label: "United States of America" }
+      ],
+      select: function(value) {
+        document.querySelector("#object .selectedValue").textContent = value;
+      }
+    });
+  </script>
+</section>
+<h3>Remote filtering</h3>
+<pre><code class="language-js">const dataSrc = async function filterCountries(query) {
+  const response = await fetch(`https://restcountries.eu/rest/v2/name/${query}`);
+  if (!response.ok) {
+    return [];
+  }
+  const result = await response.json();
+  if (!Array.isArray(result)) {
+    return [];
+  }
+  return result.map(function(v) {
+    return {
+      id: v.alpha3Code,
+      label: v.name
+    }
+  });
+}
+</code></pre>
+<section id="remote">
+  <form action=".">
+    <fieldset>
+      <label>
+        Country
+        <input type="text" name="country" autocomplete="off" />
+      </label>
+    </fieldset>
+  </form>
+  <p>
+    You selected: <span class="selectedValue"></span>
+  </p>
+  <script>
+    async function filterCountries(query) {
+      const url = `${window.location.origin}/.netlify/functions/countries?query=${query}`
+      const response = await fetch(url);
+      if (!response.ok) {
+        return [];
+      }
+      const result = await response.json();
+      if (!Array.isArray(result)) {
+        return [];
+      }
+      return result.map(function(v) {
+        return {
+          id: v.alpha3Code,
+          label: v.name
+        }
+      });
+    }
+    const plete5 = new Plete({
+      input: document.querySelector("#remote input[name='country']"),
+      dataSrc: filterCountries,
+      select: function(id) {
+        document.querySelector("#remote .selectedValue").textContent = id;
+      }
+    });
+  </script>
+</section>
+<h3>Custom rendering of options</h3>
+<section id="custom">
+  <form action=".">
+    <fieldset>
+      <label>
+        Country
+        <input type="text" name="country" autocomplete="off" />
+      </label>
+    </fieldset>
+  </form>
+  <p>
+    You selected: <span class="selectedValue"></span>
+  </p>
+  <script>
+    const plete3 = new Plete({
+      input: document.querySelector("#custom input[name='country']"),
+      dataSrc: [
+            { id: "BEL", label: "Belgium" },
+            { id: "DNK", label: "Denmark" },
+            { id: "GER", label: "Germany" },
+            { id: "MCO", label: "Monaco" },
+            { id: "SRB", label: "Serbia" },
+            { id: "ESP", label: "Spain" },
+            { id: "SWE", label: "Sweden" },
+            { id: "GBR", label: "United Kingdom" },
+            { id: "USA", label: "United States of America" }
+      ],
+      render: function(item) {
+        return `<b>${item.id}</b> ${item.label}`;
+      },
+      select: function(id) {
+        document.querySelector("#custom .selectedValue").textContent = id;
+      }
+    });
+  </script>
+</section>
+<h2>Styling</h2>
+<p>When <code>plete</code> is initialized the DOM is updated. The passed <code>&lt;input&gt;</code> element is wrapped in a <code>&lt;plete&gt;</code> element. This element is an invisible <em>inline</em> element, which provides the container necessary for WAI-ARIA support (see <a href="https://www.w3.org/TR/wai-aria-practices-1.2/#combobox">WAI-ARIA Authoring Practices combobox section</a>).</p>
+<p>You can customize the rendering by overriding styles for <code>&lt;plete&gt;, &lt;plete-list&gt;, &lt;plete-item&gt;</code> elements.</p>
+<p>When the suggestions are visible, the DOM looks like this (with additional ARIA attrbutes).</p>
+<pre><code class="language-html">&lt;plete&gt;
+  &lt;input type=&quot;text&quot; name=&quot;country&quot; autocomplete=&quot;off&quot; /&gt;
+  &lt;plete-list&gt;
+    &lt;plete-item value=&quot;BEL&quot;&gt;Belgium&lt;/plete-item&gt;
+    &lt;plete-item value=&quot;DNK&quot;&gt;Denmark&lt;/plete-item&gt;
+    &lt;!-- ... ---&gt;
+  &lt;/plete-list&gt;
+&lt;/plete&gt;
+</code></pre>
+<h3><code>autocomplete=&quot;off&quot;</code></h3>
+<p>In order to avoid collisions with browser built-in autocomplete, it is recommended to use <code>autocomplete=&quot;off&quot;</code> on the <code>&lt;input&gt;</code> element that is used with <code>plete</code>.</p>
+<pre><code class="language-html">&lt;input type=&quot;text&quot; name=&quot;country&quot; autocomplete=&quot;off&quot; /&gt;
+</code></pre>
+<p>See: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">MDN article about autocomplete attribute</a></p>
+
+
+    <footer>&copy; <a href="https://roderick.dk">Morgan Roderick</a> — <a href="https://github.com/mroderick/plete">plete on GitHub</a></footer>
+  </body>
+</html>
