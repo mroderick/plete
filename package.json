@@ -52,7 +52,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.10.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
-    "@sinonjs/referee-sinon": "^6.0.0",
+    "@sinonjs/referee-sinon": "^7.0.1",
     "@studio/changes": "^2.0.0",
     "@testing-library/dom": "^6.10.1",
     "eslint": "^6.7.2",
