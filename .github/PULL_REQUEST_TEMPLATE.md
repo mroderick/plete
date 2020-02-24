@@ -1,6 +1,6 @@
 #### Purpose (TL;DR) - mandatory
 <!--
-> please provide a concise (one or two short sentences) description of what what problem is being solved by this PR
+> Please provide a concise (one or two short sentences) description of what problem is being solved by this PR
 >
 > Example: Fix issue #123456 by re-structuring the colour selection conditional in method `paintBlue`
 -->
@@ -10,7 +10,7 @@
  #### Background (Problem in detail)  - optional
 -->
 <!--
-> When relevant, give a more thorough description of what the problem the PR is trying to solve. Examples of good topics for this section are:
+> If relevant, give a more thorough description of what problem the PR is trying to solve. Examples of good topics for this section are:
 > * Link to an existing GitHub issue describing the problem
 > * Describing the problem in greater detail than the TL;DR section above
 > * How you discovered the issue, if it's not already described as an issue on GitHub
@@ -28,7 +28,7 @@
 > "This solution works by adding a `paintBlue()` method"
 > Then your reviewer might spot a mistake in the implementation, if `paintBlue()` uses the colour red.
 >
-> Where possible; a before and after gif if appropriate for visual changes would be much appreciated.
+> Where possible: a before and after gif if appropriate for visual changes would be much appreciated.
 -->
 
 #### How to verify - mandatory
@@ -39,6 +39,6 @@
 
 #### Contributor declaration
 
-- [ ] I've read and followed the [contributing document](CONTRIBUTING.md)
+- [ ] I've read and followed the [contributing document](CONTRIBUTING.md).
 - [ ] The code I am submitting is mine to submit and is done so under the license of this repository.
-- [ ] Where features have been changed, there are tests and documentation to accompany the entire contribution
+- [ ] Where features have been changed, there are tests and documentation to accompany the entire contribution.
