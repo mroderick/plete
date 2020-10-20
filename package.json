@@ -65,7 +65,7 @@
     "eslint-plugin-testing-library": "^2.2.0",
     "eslint-plugin-this": "^0.2.3",
     "esm": "^3.2.25",
-    "http-server": "^0.12.0",
+    "http-server": "^0.12.3",
     "husky": "^4.0.7",
     "jsdom": "^16.1.0",
     "jsdom-global": "^3.0.2",
