@@ -53,7 +53,7 @@
     "@11ty/eleventy": "^0.11.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
     "@sinonjs/referee-sinon": "^7.0.1",
-    "@studio/changes": "^2.0.0",
+    "@studio/changes": "^2.0.1",
     "@testing-library/dom": "^6.10.1",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
