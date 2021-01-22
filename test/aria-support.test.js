@@ -1,4 +1,4 @@
-import { assert } from "@sinonjs/referee-sinon";
+import { assert, refute } from "@sinonjs/referee-sinon";
 import { fireEvent, waitForElement } from "@testing-library/dom";
 import { setupTest } from "./test-helper";
 
@@ -45,6 +45,32 @@ describe("Plete", function() {
         listItems.forEach(function(item) {
           assert.equals(item.getAttribute("aria-role"), "option");
         });
+      });
+
+      it("adds an `aria-activedescendant` attribute to the input", function() {
+        const listItems = this.list.querySelectorAll("plete-item");
+
+        assert.isTrue(listItems.length > 0);
+        refute.isNull(this.input);
+        refute.isNull(this.input.getAttribute("aria-activedescendant"));
+      });
+
+      it("renders the list items with an `id` attribute", function() {
+        const listItems = this.list.querySelectorAll("plete-item");
+
+        assert.isTrue(listItems.length > 0);
+        listItems.forEach(function(item) {
+          refute.isNull(item.getAttribute("id"));
+        });
+      });
+
+      it("`aria-activedescendant` attribute corresponds to an `id` attribute of another DOM node", function() {
+        const listItems = this.list.querySelectorAll("plete-item");
+
+        assert.isTrue(listItems.length > 0);
+        refute.isNull(this.input);
+        const activeDescendant = this.input.getAttribute("aria-activedescendant");
+        refute.isNull(document.getElementById(activeDescendant));
       });
 
       it("sets `aria-expanded` on the `plete` element to 'true'", function() {
