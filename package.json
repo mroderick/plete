@@ -50,7 +50,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy": "^1.0.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
     "@sinonjs/referee-sinon": "^7.0.1",
     "@studio/changes": "^2.0.1",
